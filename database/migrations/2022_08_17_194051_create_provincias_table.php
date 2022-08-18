@@ -15,8 +15,13 @@ return new class extends Migration
     {
         Schema::create('provincias', function (Blueprint $table) {
             $table->id();
+            /**Atributo que se agrego en el modelo
+             * poniendo una coma despues del nombre para darle 
+             * tamañano al campo
+             */
             $table->string('nombre')
             $table->timestamps();
+            /**Campo para el borrado logico */
             $table->softDeletes();
         });
     }

@@ -15,9 +15,10 @@ return new class extends Migration
     {
         Schema::create('barrios', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')
+            $table->string('nombre');
+            /**me crea un campo entero positivo */
             $table->unsignedBigInteger('provincia_id');
-            $table->foreign('provincia_id')->references('id')->on('provincia');
+            $table->foreign('provincia_id')->references('id')->on('provincias');
             $table->timestamps();
             $table->softDeletes();
         });
