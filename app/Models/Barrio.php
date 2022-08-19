@@ -17,7 +17,8 @@ class Barrio extends Model
     protected $connection = 'mysql';
 
     protected $fillable = [
-        'nombre'
+        'nombre',
+        /**Para vincular con la tabla provincia */
         'provincia_id'
     ];
 }
