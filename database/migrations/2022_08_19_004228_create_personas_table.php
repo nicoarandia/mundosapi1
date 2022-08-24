@@ -15,7 +15,15 @@ return new class extends Migration
     {
         Schema::create('personas', function (Blueprint $table) {
             $table->id();
+            $table->string('nombre');
+            $table->unsignedBigInteger('dni');
+            $table->unsignedBigInteger('barrio_id');
+            $table->foreign('barrio_id')->references('id')->on('barrios');
+            $table->string('email');
+            $table->unsignedBigInteger('legajo');
+            $table->unsignedBigInteger('edad');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
