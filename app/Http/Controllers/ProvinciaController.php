@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use GuzzleHttp\Client;  
+use GuzzleHttp\Client;
+/**Recordar que siempre importar el modelo provincia */  
 use App\Models\Provincia;
 use Illuminate\Http\Request;
 
@@ -15,7 +16,20 @@ class ProvinciaController extends Controller
      */
     public function index()
     {
-        //
+        //Para traer un campo especifico de provincia
+        /**$provincias = Provincia::selec('nombre')->get();*/
+        /**Trae todo los campos de la tabla provincia */
+        $provincias = Provincia::all();
+        
+        return response()->json($provincias);
+
+        /** Dos maneras de mostrar los datos como arriba y abajo con los return */
+
+        /**return response()->json([
+            'mensaje' => 'Listado de provincia',
+            'data' => $provincias
+        ]);
+        */
     }
 
     /**
@@ -34,9 +48,26 @@ class ProvinciaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    /**'$request son los datos que recibo de post' */
     public function store(Request $request)
     {
-        //
+        /**Recibe una peticion se encuentra con variable provincia y use el modelo provincia
+         * y que cree una provincia con el valor de request
+         * la variable $provincia guarda que id se le asigno
+         * feche de creacion, fecha actualizacion
+         * 
+         */
+        $provincia = Provincia::create([
+            /**lado izquierdo nombre de la columna que tenemos en modelo */
+            /**lado derecho '$request' y el mismo nombre que pusimos en modelo para buena practica */
+            'nombre' => $request['nombre'],
+            'index_id' => $request['index']
+        ]);
+        /** muestra la provincia que se inserto y el msj */
+        return response([
+            'mensaje' => 'La provincia se agrego correctamente',
+            'data' => $provincia
+        ]);
     }
 
     /**
@@ -83,7 +114,7 @@ class ProvinciaController extends Controller
     {
         //
     }
-
+    /**Nombre de la funcion ''getProvinciaSinParametro */
     public function getProvinciaSinParametro()
     {
         $client = new Client();

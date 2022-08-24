@@ -18,6 +18,7 @@ class Provincia extends Model
     protected $connection = 'mysql';
     /**Que atributo va a tener el modelo ecepto el ID,replicarlo en archi migration */
     protected $fillable = [
-        'nombre'
+        'nombre',
+        'index_id'
     ];
 }

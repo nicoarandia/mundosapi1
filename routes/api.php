@@ -25,3 +25,11 @@ Route::get('/provincia', [ProvinciaController::class,'getProvinciaSinParametro']
 Route::get('/provincias/{id}', [ProvinciaController::class,'getProvinciaConParametro']);
 
 Route::get('/provinciasAlternativa/{id?}', [ProvinciaController::class,'getProvinciaAlternativa']);
+
+/**Ruta para visualizar todas las provincias registradas en la base de datos*/
+/**Si van a traer mas de un dato que la ruta sea en plural */
+Route::get('/provincias', [ProvinciaController::class,'index']);
+
+/**Ruta para el registro en una base de datos */
+Route::post('/insert-provincias', [ProvinciaController::class,'store']);
+ 
